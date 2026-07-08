@@ -1,0 +1,1 @@
+Dane zostały pobrane z bazy NCBI Sequence Read Archive (SRA), wyszukując eksperyment o numerze SRR16356247. Do pobrania wykorzystano sekcję Data access, z której dostępny jest plik SRA Normalized, przeznaczony do dalszej analizy za pomocą narzędzi SRA Toolkit.
