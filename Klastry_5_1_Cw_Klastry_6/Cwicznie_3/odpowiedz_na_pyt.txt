@@ -1,0 +1,5 @@
+Zakleszczenie powstaje, ponieważ oba wątki pobierają blokady w innej kolejności. Najpierw wątek 1 zdobywa blokadę A, a wątek 2 blokadę B. Następnie oba czekają przez sekundę. Po tym czasie wątek 1 próbuje zdobyć blokadę B, która jest już zajęta przez wątek 2. Jednocześnie wątek 2 próbuje zdobyć blokadę A, która jest zajęta przez wątek 1. W rezultacie oba wątki czekają na zwolnienie blokady przez drugi wątek i żaden z nich nie może kontynuować pracy.
+
+Zakleszczenie (deadlock) to sytuacja, w której dwa lub więcej wątków lub procesów czeka na zasoby zajmowane przez siebie nawzajem. Ponieważ żaden z nich nie może zwolnić posiadanej blokady przed zdobyciem kolejnej, program zatrzymuje się i nie może zakończyć działania.
+
+Najprostszą zasadą pozwalającą uniknąć zakleszczeń jest pobieranie wszystkich blokad zawsze w tej samej kolejności. Jeżeli wszystkie wątki najpierw zdobywają blokadę A, a dopiero później blokadę B, nie może dojść do sytuacji, w której wątki będą czekały na siebie nawzajem.

@@ -1,0 +1,7 @@
+
+W przedstawionym programie race condition występuje w momencie, gdy oba wątki jednocześnie sprawdzają warunek "while tasks:" i próbują pobrać pierwsze zadanie z listy za pomocą "tasks.pop(0)". Jeżeli na liście pozostanie tylko jedno zadanie, oba wątki mogą jednocześnie uznać, że lista nie jest pusta. Pierwszy wątek pobierze ostatni element z listy, natomiast drugi spróbuje wykonać "pop(0)" na pustej liście, co spowoduje wystąpienie błędu "IndexError".
+
+Blokadą należy chronić operację dostępu do listy "task", czyli sprawdzenie, czy lista nie jest pusta oraz pobranie z niej pierwszego elementu ("tasks.pop(0)"). Dzięki temu tylko jeden wątek będzie mógł w danym momencie pobierać zadanie z listy.
+
+Blokada powinna znajdować się wewnątrz pętli "while", ponieważ każdy wątek powinien blokować dostęp tylko na czas pobrania jednego zadania. Po pobraniu zadania blokada jest zwalniana i drugi wątek może pobrać kolejne zadanie. Gdyby blokada obejmowała całą pętlę, jeden wątek wykonałby wszystkie zadania, a drugi czekałby na zakończenie pracy, co niwelowałoby korzyści wynikające z wielowątkowości.
+
